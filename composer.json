@@ -14,7 +14,8 @@
         "laravel/nova": "^3.14",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "titasgailius/search-relations": "^2.0"
+        "titasgailius/search-relations": "^2.0",
+        "vyuldashev/nova-permission": "^3.0"
     },
     "repositories": [
         {

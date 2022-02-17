@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\Models\Topics;
+use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -18,7 +18,7 @@ class TopicsNum extends Value
      */
     public function calculate(Request $request)
     {
-        return $this->count($request, Topics::class);
+        return $this->count($request, Topic::class);
     }
 
     /**

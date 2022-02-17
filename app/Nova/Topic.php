@@ -11,15 +11,17 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsToMany;
 
-class Topics extends Resource
+class Topic extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Topics::class;
+    public static $model = \App\Models\Topic::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -49,11 +51,12 @@ class Topics extends Resource
     public function fields(Request $request)
     {
         return [
+
             ID::make(__('ID'), 'id')->sortable(),
 
             Text::make('标题', 'title')->rules('required'),
 
-            BelongsTo::make('user'),
+//            BelongsTo::make('user'),
 //            BelongsTo::make('replie'),
 //            BelongsTo::make('categorie'),
             Text::make('分类', function ($model) {
@@ -71,6 +74,7 @@ class Topics extends Resource
 
             Trix::make('内容', 'body')->hideFromIndex()->rules('required'),
 
+            HasMany::make('Replie'),
         ];
     }
 
@@ -82,7 +86,7 @@ class Topics extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+
     }
 
     /**

@@ -9,10 +9,10 @@ class Replies extends Model
 {
     use HasFactory;
 
-    public function topics()
-    {
-        return $this->hasMany(Topics::class);
-    }
+//    public function topics()
+//    {
+//        return $this->hasMany(Topic::class);
+//    }
 
     public function user()
     {

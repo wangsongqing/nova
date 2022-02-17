@@ -58,7 +58,7 @@ class Replie extends Resource
             }),
 
             Text::make('话题', function($model) {
-                $topics = \App\Models\Topics::query()->where('id', $model->topic_id)->first();
+                $topics = \App\Models\Topic::query()->where('id', $model->topic_id)->first();
                 return $topics->title;
             })
         ];

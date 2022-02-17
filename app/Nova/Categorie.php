@@ -51,7 +51,7 @@ class Categorie extends Resource
                 ->rules('required', 'max:255'),
 
             Text::make('话题数量', function ($model) {
-                return \App\Models\Topics::query()->where('category_id', $model->id)->count();
+                return \App\Models\Topic::query()->where('category_id', $model->id)->count();
             })
         ];
     }

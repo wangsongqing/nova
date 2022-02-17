@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\MorphToMany;
 
 class User extends Resource
 {
@@ -82,6 +83,9 @@ class User extends Resource
             Text::make('', function ($model) {
                 return "<a href='http://larabbs.org/users/{$model->id}'>用户详情</a>";
             })->asHtml(),
+
+            MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class),
+            MorphToMany::make('Permissions', 'permissions', \Vyuldashev\NovaPermission\Permission::class),
         ];
     }
 
