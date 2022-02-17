@@ -7,6 +7,7 @@ use App\Models\Replies;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\BelongsTo;
@@ -68,7 +69,8 @@ class Topics extends Resource
                 return '<a href="http://larabbs.org/topics/'.$model->id.'/'.$model->slug.'"><button>论坛详情</button></a>';
             })->asHtml(),
 
-            Text::make('内容', 'body')->hideFromIndex()->asHtml()->rules('required'),
+            Trix::make('内容', 'body')->hideFromIndex()->rules('required'),
+
         ];
     }
 
