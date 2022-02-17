@@ -31,7 +31,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id', 'name', 'email', 'created_at',
     ];
 
     /**
@@ -59,7 +59,7 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
-            DateTime::make('注册时间', 'created_at')->hideWhenCreating()->hideWhenUpdating(),
+            DateTime::make('注册时间', 'created_at')->hideWhenCreating()->hideWhenUpdating()->sortable(),
 
             Text::make('ROLE', function ($model) {
                 $userRole = \App\Models\Roles::query()->where('id', $model->id)->first();

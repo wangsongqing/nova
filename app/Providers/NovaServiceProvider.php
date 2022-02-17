@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Coroowicaksono\ChartJsIntegration\LineChart;
+
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -57,9 +59,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function cards()
     {
+        $service = new \App\Service\NovaServiceProvider();
         return [
             new NewUsers(),
+            $service->getUserWeekData(),
             new TopicsNum(),
+            $service->getTopicsWeekData()
         ];
     }
 
