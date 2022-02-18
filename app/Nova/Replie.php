@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Replie extends Resource
@@ -50,8 +51,8 @@ class Replie extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('评论内容','content')->asHtml()->rules('required'),
 
+            Trix::make('评论内容', 'content')->hideFromIndex()->rules('required')->withFiles(''),
             Text::make('作者', function($model) {
                 $userInfo = \App\Models\User::query()->where('id', $model->user_id)->first();
                 return $userInfo->name;
@@ -60,7 +61,9 @@ class Replie extends Resource
             Text::make('话题', function($model) {
                 $topics = \App\Models\Topic::query()->where('id', $model->topic_id)->first();
                 return $topics->title;
-            })
+            }),
+
+            // \Laravel\Nova\Fields\HasMany::make('Topic')
         ];
     }
 

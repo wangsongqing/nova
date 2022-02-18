@@ -72,7 +72,7 @@ class Topic extends Resource
                 return '<a href="http://larabbs.org/topics/'.$model->id.'/'.$model->slug.'"><button>论坛详情</button></a>';
             })->asHtml(),
 
-            Trix::make('内容', 'body')->hideFromIndex()->rules('required'),
+            Trix::make('内容', 'body')->hideFromIndex()->rules('required')->withFiles(''),
 
             HasMany::make('Replie'),
         ];
