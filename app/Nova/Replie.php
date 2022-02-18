@@ -11,9 +11,9 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Replie extends Resource
 {
-    public static $displayInNavigation = false;
+    // public static $displayInNavigation = false;
 
-    public static $group = '内容管理';
+    // public static $group = '内容管理';
 
 //    public static $subGroup = '回复';
     /**
@@ -42,8 +42,8 @@ class Replie extends Resource
     ];
 
     public  static  $searchRelations = [
-        'user' => [ 'name' , 'id' ],
-        'Topics'=> ['title', 'id', 'topic_id']
+        'user' => [ 'name'],
+        // 'topic'=> ['topic_id']
     ];
 
     /**
@@ -57,6 +57,7 @@ class Replie extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
+            Text::make('评论内容', 'content')->hideWhenUpdating()->hideWhenCreating()->asHtml(),
             Trix::make('评论内容', 'content')->hideFromIndex()->rules('required')->withFiles(''),
             Text::make('作者', function($model) {
                 $userInfo = \App\Models\User::query()->where('id', $model->user_id)->first();
@@ -68,7 +69,7 @@ class Replie extends Resource
                 return $topics->title;
             }),
 
-            // \Laravel\Nova\Fields\HasMany::make('Topic')
+             // \Laravel\Nova\Fields\HasMany::make('Topic')
         ];
     }
 

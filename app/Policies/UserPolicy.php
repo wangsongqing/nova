@@ -15,12 +15,19 @@ class UserPolicy
     /**
      * 检查用户是否能够更新帖子模型
      *
-     * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param User $user
+     * @param $value
      * @return mixed
      */
-    public function update(User $user)
+    public function update(User $user, $value)
     {
+        if ($user->id != 1) {
+            return false;
+        }
+
+        if (isset($value->id) && $value->id == 1) {
+            return false;
+        }
         return true;
     }
 
@@ -31,6 +38,10 @@ class UserPolicy
 
     public function delete(User $user, $value)
     {
+        if ($user->id != 1) {
+            return false;
+        }
+
         if (isset($value->id) && $value->id == 1) {
             return false;
         }

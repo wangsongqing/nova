@@ -7,6 +7,8 @@ use Laravel\Nova\Filters\Filter;
 
 class UserType extends Filter
 {
+    public $name = '用户权限';
+
     /**
      * The filter's component.
      *

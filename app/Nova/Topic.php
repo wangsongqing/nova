@@ -7,6 +7,7 @@ use App\Models\Replies;
 use App\Nova\Filters\CategoriesName;
 use App\Nova\Filters\UserName;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
@@ -75,6 +76,8 @@ class Topic extends Resource
                 $categoryName = Categorie::query()->where('id', $model->category_id)->first();
                 return $categoryName->name;
             }),
+
+            DateTime::make('发布时间', 'created_at')->hideWhenCreating()->hideWhenUpdating()->sortable(),
 
             Text::make('评论数', function ($model) {
                  return Replies::query()->where('topic_id', $model->id)->count();
