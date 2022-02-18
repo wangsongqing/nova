@@ -6,6 +6,8 @@ use App\Nova\Metrics\NewUsers;
 use App\Nova\Metrics\TopicsNum;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Coroowicaksono\ChartJsIntegration\LineChart;
@@ -21,6 +23,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+        \OptimistDigital\NovaSettings\NovaSettings::addSettingsFields([
+            Text::make('站点名称', 'site_name'),
+            Text::make('联系邮箱', 'contact_email'),
+            Text::make('SEO - Description', 'seo_description'),
+            Text::make('SEO - Keywords', 'seo_keyword')
+        ]);
     }
 
     /**
@@ -31,9 +39,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -87,7 +95,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
-            new ResourceGroupMenu()
+            new ResourceGroupMenu(),
+            new \OptimistDigital\NovaSettings\NovaSettings(),
         ];
     }
 

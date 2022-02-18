@@ -14,6 +14,8 @@
         "laravel/nova": "^3.14",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "optimistdigital/nova-settings": "^3.5",
+        "overtrue/laravel-lang": "~4.0",
         "saintsystems/nova-resource-group-menu": "^0.1.0",
         "titasgailius/search-relations": "^2.0",
         "vyuldashev/nova-permission": "^3.0"

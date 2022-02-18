@@ -19,6 +19,8 @@ use Laravel\Nova\Fields\BelongsToMany;
 
 class Topic extends Resource
 {
+    public static $group = '内容管理';
+
     /**
      * The model the resource corresponds to.
      *

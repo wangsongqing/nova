@@ -12,6 +12,8 @@ use Laravel\Nova\Fields\MorphToMany;
 
 class User extends Resource
 {
+    public static $group = '角色及权限';
+
     /**
      * The model the resource corresponds to.
      *

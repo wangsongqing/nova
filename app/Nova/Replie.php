@@ -16,6 +16,9 @@ class Replie extends Resource
     // public static $group = '内容管理';
 
 //    public static $subGroup = '回复';
+
+    public static $group = '内容管理';
+
     /**
      * The model the resource corresponds to.
      *

@@ -9,6 +9,8 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Links extends Resource
 {
+    public static $group = '内容管理';
+
     /**
      * The model the resource corresponds to.
      *
