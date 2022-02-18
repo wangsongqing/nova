@@ -4,6 +4,8 @@ namespace App\Nova;
 
 use App\Models\Categorie;
 use App\Models\Replies;
+use App\Nova\Filters\CategoriesName;
+use App\Nova\Filters\UserName;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -40,6 +42,11 @@ class Topic extends Resource
         'title'
     ];
 
+    public static $searchRelations = [
+        'categorie' => ['name'],
+        'user' => ['name']
+    ];
+
     //public static $with = ['user'];
 
     /**
@@ -56,9 +63,14 @@ class Topic extends Resource
 
             Text::make('标题', 'title')->rules('required'),
 
-//            BelongsTo::make('user'),
-//            BelongsTo::make('replie'),
-//            BelongsTo::make('categorie'),
+            // BelongsTo::make('user'),
+            // BelongsTo::make('replie'),
+            // BelongsTo::make('categorie'),
+
+            Text::make('作者', function ($model) {
+                    $userInfo = \App\Models\User::query()->where('id', $model->user_id)->first();
+                    return $userInfo->name;
+            }),
             Text::make('分类', function ($model) {
                 $categoryName = Categorie::query()->where('id', $model->category_id)->first();
                 return $categoryName->name;
@@ -97,7 +109,10 @@ class Topic extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new CategoriesName(),
+            new UserName()
+        ];
     }
 
     /**
