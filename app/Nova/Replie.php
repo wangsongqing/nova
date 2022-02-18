@@ -11,6 +11,11 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Replie extends Resource
 {
+    public static $displayInNavigation = false;
+
+    public static $group = '内容管理';
+
+//    public static $subGroup = '回复';
     /**
      * The model the resource corresponds to.
      *

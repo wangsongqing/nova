@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ae539b22dbe66b6ea3de9f88f1a8652",
+    "content-hash": "0cbb3276fe934c0de0f2e3502b4da0e4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4414,6 +4414,63 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "saintsystems/nova-resource-group-menu",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saintsystems/nova-resource-group-menu.git",
+                "reference": "65d75ebfb86327a3ce018707ffc3f21c84430360"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/saintsystems/nova-resource-group-menu/zipball/65d75ebfb86327a3ce018707ffc3f21c84430360",
+                "reference": "65d75ebfb86327a3ce018707ffc3f21c84430360",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SaintSystems\\Nova\\ResourceGroupMenu\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SaintSystems\\Nova\\ResourceGroupMenu\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saint Systems"
+                }
+            ],
+            "description": "Resource group sub-menus for Laravel Nova.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "resources"
+            ],
+            "support": {
+                "issues": "https://github.com/saintsystems/nova-resource-group-menu/issues",
+                "source": "https://github.com/saintsystems/nova-resource-group-menu/tree/0.1.0"
+            },
+            "time": "2020-05-12T16:13:23+00:00"
         },
         {
             "name": "spatie/laravel-permission",

@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\Categories;
+use App\Models\Categorie;
 use App\Models\Replies;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
@@ -60,7 +60,7 @@ class Topic extends Resource
 //            BelongsTo::make('replie'),
 //            BelongsTo::make('categorie'),
             Text::make('分类', function ($model) {
-                $categoryName = Categories::query()->where('id', $model->category_id)->first();
+                $categoryName = Categorie::query()->where('id', $model->category_id)->first();
                 return $categoryName->name;
             }),
 

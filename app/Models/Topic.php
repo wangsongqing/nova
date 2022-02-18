@@ -17,7 +17,7 @@ class Topic extends Model
 
     public function categorie()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Categorie::class);
     }
 
     public function replie()

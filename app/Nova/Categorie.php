@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -14,7 +15,7 @@ class Categorie extends Resource
      *
      * @var string
      */
-    public static $model = \App\Models\categories::class;
+    public static $model = \App\Models\categorie::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -52,7 +53,8 @@ class Categorie extends Resource
 
             Text::make('话题数量', function ($model) {
                 return \App\Models\Topic::query()->where('category_id', $model->id)->count();
-            })
+            }),
+            HasMany::make('Topic'),
         ];
     }
 
